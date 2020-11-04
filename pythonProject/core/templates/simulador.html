@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de loteria</title>
+</head>
+<body>
+    <img src="images/logo.jpg" alt="imagem_loteria" width="350">
+    <h1>Simulador de loteria</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input name="num" type="number">
+        <button type="submit">Gerar</button>
+    </form>
+    <div>
+        <p>----------------------------------------------</p>
+        {% for lista in listas %}
+        <span style="color:red;">Jogo {{ forloop.counter }} :</span>
+            {% for numero in lista %}
+                {{ numero }} &nbsp;
+            {% endfor %}
+            <br/>
+        {% endfor %}
+        <p>----------------------------------------------</p>
+        Numeros &nbsp; - &nbsp; Repeticoes
+        <br/>
+        {% for i in repeticoes %}
+            {{ forloop.counter }} <span style="padding-left:80px"></span> {{ i }} <br>
+        {% endfor %}
+    </div>
+</body>
+</html>
